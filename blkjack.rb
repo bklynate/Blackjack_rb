@@ -77,20 +77,21 @@ prompt "The Dealer's cards are #{dealer_cards[0][0]} #{dealer_cards[0][1]} & #{d
 prompt "The value of the cards are #{hand_value(dealer_cards)}"
 
 while choice == '2'
- new_card = deck.pop
- dealer_cards << new_card
- prompt "Dealer was dealt #{new_card[0]} #{new_card[1]}"
- prompt "Dealer's current hand total is: #{hand_value(dealer_cards)}"
+  new_card = deck.pop
+  dealer_cards << new_card
+  prompt "Dealer was dealt #{new_card[0]} #{new_card[1]}"
+  prompt "Dealer's current hand total is: #{hand_value(dealer_cards)}"
 
- if hand_value(dealer_cards) == 21
-  prompt "Dealer hits Blackjack, YOU LOSE!!!"
+  if hand_value(dealer_cards) == 21
+    prompt "Dealer hits Blackjack, YOU LOSE!!!"
+    break
   elsif hand_value(dealer_cards) < 21
     new_card = deck.pop
     dealer_cards << new_card
   else
     prompt "Dealer Bust!! - You Win!!"
     break
- end
+  end
 end
 
 prompt "Press Enter to Exit."
