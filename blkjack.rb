@@ -11,7 +11,7 @@ end
 def user_input
   begin
     choice = gets.chomp
-    prompt "That's not a valid number, please try again" unless valid_choices(choice)
+    prompt "Input not valid!" unless valid_choices(choice)
   end until valid_choices(choice)
   choice
 end
