@@ -65,7 +65,7 @@ player_name = gets.chomp.capitalize
 prompt "Welcome to Nate's Blackjack"
 
 prompt "#{player_name}'s cards are #{player_cards[0][0]} #{player_cards[0][1]} & #{player_cards[1][0]} #{player_cards[1][1]}"
-prompt "The value of the cards are #{player_total}"
+prompt "The value of the player's cards are #{player_total}"
 
 
 if player_total == 21
@@ -99,7 +99,7 @@ while player_total < 21
 end
 
 prompt "The Dealer's cards are #{dealer_cards[0][0]} #{dealer_cards[0][1]} & #{dealer_cards[1][0]} #{dealer_cards[1][1]}"
-prompt "The value of the cards are #{dealer_total}"
+prompt "The value of dealer's cards are #{dealer_total}"
 
 if dealer_total == 21
   prompt "Dealer has hit Blackjack - You Win!!" 
