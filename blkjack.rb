@@ -1,6 +1,6 @@
-#require 'pry'
+#  require 'pry'
 
-#Game Methods
+#  Game Methods
 
 def prompt(words)
  puts ">>> #{words}"
@@ -64,6 +64,7 @@ player_name = gets.chomp.capitalize
 
 prompt "Welcome to Nate's Blackjack"
 
+
 prompt "#{player_name}'s cards are #{player_cards[0][0]} #{player_cards[0][1]} & #{player_cards[1][0]} #{player_cards[1][1]}"
 prompt "The value of the player's cards are #{player_total}"
 
@@ -125,10 +126,13 @@ while dealer_total < 17
 
 end
 
-if dealer_total < player_total
+if dealer_total > player_total
+  prompt "Dealer Wins!!"
+  exit
+elsif dealer_total < player_total 
   prompt "#{player_name} Wins!!"
   exit
 else
-  prompt "Too bad - You Lose!!"
+  prompt "It's a tie....."
   exit
 end
