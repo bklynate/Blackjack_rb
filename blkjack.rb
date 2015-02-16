@@ -99,6 +99,8 @@ while player_total < 21
   end
 end
 
+
+# Dealer's turn
 prompt "The Dealer's cards are #{dealer_cards[0][0]} #{dealer_cards[0][1]} & #{dealer_cards[1][0]} #{dealer_cards[1][1]}"
 prompt "The value of dealer's cards are #{dealer_total}"
 
@@ -119,7 +121,7 @@ while dealer_total < 17
   if dealer_total == 21
     prompt "Dealer has hit Blackjack - You Lose!!" 
     exit
-  elsif dealer_total < 21
+  elsif dealer_total > 21
     prompt "Dealer has busted!! - #{player_name} Wins!!" 
     exit
   end
@@ -128,11 +130,10 @@ end
 
 if dealer_total > player_total
   prompt "Dealer Wins!!"
-  exit
 elsif dealer_total < player_total 
   prompt "#{player_name} Wins!!"
-  exit
 else
-  prompt "It's a tie....."
-  exit
+  prompt "It's a tie....."  
 end
+
+exit
