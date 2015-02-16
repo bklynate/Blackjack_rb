@@ -73,7 +73,7 @@ begin
 
   if player_total == 21
     prompt "#{player_name} has hit Blackjack - You Win!!" 
-    exit
+    
   end
 
   while player_total < 21
@@ -94,10 +94,10 @@ begin
 
     if player_total == 21
       prompt "#{player_name} has hit Blackjack - You Win!!" 
-      exit
+      
     elsif player_total > 21
       prompt "#{player_name} has busted!! - #{player_name} Loses!!" 
-      exit
+      
     end
   end
 
@@ -142,4 +142,4 @@ begin
 
   prompt "Try again? [y/n]"
   play_again = gets.chomp.downcase
-end unless play_again == "n"
+end until play_again == "n"
