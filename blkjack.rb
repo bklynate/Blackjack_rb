@@ -40,9 +40,9 @@ def hand_value(cards)
 end
 
 begin
-  # Game Start Logistics
+  #  Game Start Logistics
 
-  # Deck defined
+  #  Deck defined
   suits = ["Clubs :","Diamonds :","Spades :","Hearts :"]
   card_values = [2,3,4,5,6,7,8,9,10,"King","Queen","Jack","Ace"]
 
@@ -52,9 +52,11 @@ begin
   player_cards = []
   dealer_cards = []
 
-  #Player cards dealt
+  #  Player cards dealt
   player_cards << deck.pop
   player_cards << deck.pop
+
+  #  Deal cards dealt
   dealer_cards << deck.pop
   dealer_cards << deck.pop
 
@@ -65,7 +67,7 @@ begin
 
   player_name = gets.chomp.capitalize
 
-  # Start of player turn
+  #  Start of player turn
 
   prompt "Welcome to Nate's Blackjack"
   prompt "#{player_name}'s cards are #{player_cards[0][0]} #{player_cards[0][1]} & #{player_cards[1][0]} #{player_cards[1][1]}"
@@ -102,11 +104,11 @@ begin
   end
 
 
-  # Dealer's turn
+  #  Dealer's turn
   prompt "The Dealer's cards are #{dealer_cards[0][0]} #{dealer_cards[0][1]} & #{dealer_cards[1][0]} #{dealer_cards[1][1]}"
   prompt "The value of dealer's cards are #{dealer_total}"
 
-  # Initial check for dealer blackjack
+  #  Initial check for dealer blackjack
 
   if dealer_total == 21
     prompt "Dealer has hit Blackjack - You Win!!" 
@@ -114,7 +116,7 @@ begin
   end
 
   while dealer_total < 17
-    # Dealer hit
+    #  Dealer hit
 
     new_card = deck.pop
     prompt "Dealer was dealt #{new_card[0]} #{new_card[1]}"
@@ -130,7 +132,7 @@ begin
     end
   end
 
-# Compare Stays
+#  Compare Stays
 
   if dealer_total > player_total
     prompt "Dealer Wins!!"
@@ -139,6 +141,8 @@ begin
   else
     prompt "It's a tie....."  
   end
+
+#  Conditional "try again" ending to the begin loop
 
   prompt "Try again? [y/n]"
   play_again = gets.chomp.downcase
