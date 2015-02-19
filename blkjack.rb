@@ -24,7 +24,7 @@ def hand_value(cards)
   total = 0
 
   arr.each do |value|
-    if value == 'A'
+    if value == 'Ace'
       total += 11
     elsif value.to_i == 0
       total += 10
@@ -33,7 +33,7 @@ def hand_value(cards)
     end
   end
 
-  arr.select { |value| value == 'A'}.count.times do
+  arr.select { |value| value == 'Ace'}.count.times do
     total -= 10 if total > 21
   end
 
@@ -96,6 +96,7 @@ begin
 
     if player_total == 21
       prompt "#{player_name} has hit Blackjack" 
+      player_total = false
     elsif player_total > 21
       prompt "#{player_name} has busted!! - #{player_name} Loses!!" 
       player_total = false
