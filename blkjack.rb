@@ -76,7 +76,6 @@ begin
 
   if player_total == 21
     prompt "#{player_name} has hit Blackjack - You Win!!" 
-    
   end
 
   while player_total != false && player_total != 21
@@ -97,15 +96,12 @@ begin
 
     if player_total == 21
       prompt "#{player_name} has hit Blackjack" 
-      
     elsif player_total > 21
       prompt "#{player_name} has busted!! - #{player_name} Loses!!" 
       player_total = false
     end
     player_total
-    
   end
-
 
   if choice == "2" 
     prompt "The Dealer's cards are #{dealer_cards[0][0]} #{dealer_cards[0][1]} & #{dealer_cards[1][0]} #{dealer_cards[1][1]}"
@@ -121,7 +117,6 @@ begin
 
   while dealer_total < 17 && player_total != false
   #  Dealer hit
-    
     new_card = deck.pop
     prompt "Dealer was dealt #{new_card[0]} #{new_card[1]}"
     dealer_cards << new_card
@@ -129,17 +124,14 @@ begin
     prompt "The value of dealer's cards are #{dealer_total}" 
     if dealer_total == 21
       prompt "Dealer has hit Blackjack - You Lose!!" 
-      
     elsif dealer_total > 21
       prompt "Dealer has busted!! - #{player_name} Wins!!" 
-      
     end
   end
   
 #  Compare Stays
 
   if dealer_total < 22 && player_total != false
-    
     if dealer_total > player_total 
       prompt "Dealer Wins!!"
     elsif dealer_total < player_total 
