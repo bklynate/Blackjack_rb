@@ -10,6 +10,7 @@ def valid_choices(choice)
   choice.to_i == 1 or choice.to_i == 2
 end
 
+
 def user_input
   begin
     choice = gets.chomp
@@ -78,7 +79,7 @@ begin
     
   end
 
-  while player_total < 21
+  while player_total != false && player_total != 21
     prompt "You may 'Hit' or 'Stay': Press 1 to 'Hit' Press 2 to 'Stay'" 
     choice = user_input
 
@@ -95,29 +96,32 @@ begin
     prompt "The value of #{player_name}'s' cards are #{player_total}" 
 
     if player_total == 21
-      prompt "#{player_name} has hit Blackjack - You Win!!" 
+      prompt "#{player_name} has hit Blackjack" 
       
     elsif player_total > 21
       prompt "#{player_name} has busted!! - #{player_name} Loses!!" 
-      
+      player_total = false
     end
+    player_total
+    
   end
 
 
-  #  Dealer's turn
-  prompt "The Dealer's cards are #{dealer_cards[0][0]} #{dealer_cards[0][1]} & #{dealer_cards[1][0]} #{dealer_cards[1][1]}"
-  prompt "The value of dealer's cards are #{dealer_total}"
+  if choice == "2" 
+    prompt "The Dealer's cards are #{dealer_cards[0][0]} #{dealer_cards[0][1]} & #{dealer_cards[1][0]} #{dealer_cards[1][1]}"
+    prompt "The value of dealer's cards are #{dealer_total}"
+    dealer_total
+  end
 
   #  Initial check for dealer blackjack
 
   if dealer_total == 21
     prompt "Dealer has hit Blackjack - You Win!!" 
-    
   end
 
-  while dealer_total < 17
-    #  Dealer hit
-
+  while dealer_total < 17 && player_total != false
+  #  Dealer hit
+    
     new_card = deck.pop
     prompt "Dealer was dealt #{new_card[0]} #{new_card[1]}"
     dealer_cards << new_card
@@ -131,19 +135,27 @@ begin
       
     end
   end
-
+  
 #  Compare Stays
 
-  if dealer_total > player_total
-    prompt "Dealer Wins!!"
-  elsif dealer_total < player_total 
-    prompt "#{player_name} Wins!!"
-  else
-    prompt "It's a tie....."  
+  if dealer_total < 22 && player_total != false
+    
+    if dealer_total > player_total 
+      prompt "Dealer Wins!!"
+    elsif dealer_total < player_total 
+      prompt "#{player_name} Wins!!"
+    elsif dealer_total == player_total
+      prompt "It's a tie....."  
+    end
   end
 
 #  Conditional "try again" ending to the begin loop
+#  A validation check to make sure input is either yes or no
 
   prompt "Try again? [y/n]"
   play_again = gets.chomp.downcase
+  while !['y', 'n'].include?(play_again)
+    puts "Error: you must enter 'y' or 'n'"
+    play_again = gets.chomp.downcase
+  end
 end until play_again == "n"
